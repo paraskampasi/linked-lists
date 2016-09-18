@@ -207,6 +207,24 @@ public class create
 			return node;
 			
 		}
+		
+		public void rec_rev(Node node)//Reversing the linked list recursively
+		{
+			Node current=node;
+			
+			if(current==null)
+				return;
+			
+			if(current.next==null)
+			{
+				head=current;
+				return;
+			}
+			
+			rec_rev(current.next);
+			current.next.next=current;
+			current.next=null;
+		}
 	
 		public void printvalues()
 		{
@@ -263,13 +281,13 @@ public class create
 		    obj.printvalues();
 		 
 		    System.out.println("Reversing the list");
-		    Node rev=obj.reverse(obj.head);
-		    obj.printvalues(rev);
+		    obj.rec_rev(obj.head);
+		    obj.printvalues();
 		    
-		//  int num= obj.recursive_count(obj.head);
-		 // System.out.println("Number of nodes in the list :" +num);
+		    int num= obj.recursive_count(obj.head);
+		    System.out.println("Number of nodes in the list :" +num);
 		  
-		   System.out.println("Program Completed");
+		    System.out.println("Program Completed");
 		}
 		
 }
